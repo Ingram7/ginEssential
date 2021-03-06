@@ -1,0 +1,127 @@
+basePath: /
+host: 192.168.0.79:18090
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/auth/info:
+    get:
+      responses:
+        "200":
+          description: '{"code": 200, "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+        "400":
+          description: '{"code": 400, "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+  /api/auth/login:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用户登录
+      parameters:
+      - description: 登录账户
+        in: formData
+        name: telephone
+        required: true
+        type: string
+      - description: 登录密码
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 200, "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+        "400":
+          description: '{"code": 400, "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+      tags:
+      - 登录
+  /api/auth/register:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用户注册
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        type: string
+      - description: 登录账户
+        in: formData
+        name: telephone
+        required: true
+        type: string
+      - description: 登录密码
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": "200", "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+        "400":
+          description: '{"code": "400", "msg": "具体信息", "data": "具体数据"}'
+          schema:
+            type: string
+      tags:
+      - 注册
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+  OAuth2AccessCode:
+    authorizationUrl: https://example.com/oauth/authorize
+    flow: accessCode
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+  OAuth2Application:
+    flow: application
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+      write: ' Grants write access'
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+  OAuth2Implicit:
+    authorizationUrl: https://example.com/oauth/authorize
+    flow: implicit
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+      write: ' Grants write access'
+    type: oauth2
+  OAuth2Password:
+    flow: password
+    scopes:
+      admin: ' Grants read and write access to administrative information'
+      read: ' Grants read access'
+      write: ' Grants write access'
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format
