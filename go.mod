@@ -10,6 +10,7 @@ require (
 	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/jinzhu/gorm v1.9.16
 	github.com/mailru/easyjson v0.7.6 // indirect
+	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/viper v1.7.1
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.7

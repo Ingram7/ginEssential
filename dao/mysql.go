@@ -13,6 +13,10 @@ var (
 	DB *gorm.DB
 )
 
+func GetDB() *gorm.DB {
+	return DB
+}
+
 func InitMySQL() (err error) {
 	driverName := viper.GetString("datasource.driverName")
 	host := viper.GetString("datasource.host")
@@ -35,6 +39,7 @@ func InitMySQL() (err error) {
 		return fmt.Errorf("error in InitMySQL.Open, error: [%s]", err.Error())
 	}
 	DB.AutoMigrate(&models.User{})
+
 	return nil
 }
 

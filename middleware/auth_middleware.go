@@ -28,7 +28,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		// 验证通过后获取claims 中的userId
+		// 验证通过后获取 claims 中的 userId
 		userId := claims.UserId
 		var user models.User
 		dao.GetUserId(&user, userId)

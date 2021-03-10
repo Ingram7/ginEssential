@@ -106,7 +106,6 @@ func Login(c *gin.Context) {
 		return
 	}
 	// 返回结果
-
 	response.Success(c, gin.H{"token": token}, "登录成功")
 }
 

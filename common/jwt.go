@@ -35,8 +35,6 @@ func ReleaseToken(user models.User) (string, error) {
 
 func ParseToken(tokenString string) (*jwt.Token, *Claims, error) {
 	claims := &Claims{}
-	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (i interface{}, err error) {
-		return jwtKey, nil
-	})
+	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (i interface{}, err error) { return jwtKey, nil })
 	return token, claims, err
 }

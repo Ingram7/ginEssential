@@ -10,14 +10,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-func init() {
-	config.InitConfig()
-	err := dao.InitMySQL()
-	if err != nil {
-		fmt.Println(err)
-	}
-}
-
 // @title Swagger Example API
 // @version 1.0
 // @description This is a sample server celler server.
@@ -65,6 +57,13 @@ func init() {
 
 func main() {
 
+	if err := config.InitConfig(); err != nil {
+		fmt.Println(err.Error())
+	}
+	if err := dao.InitMySQL(); err != nil {
+		fmt.Println(err.Error())
+	}
+
 	defer dao.Close()
 	r := routers.SetupRouter()
 	port := viper.GetString("server.port")
@@ -72,8 +71,5 @@ func main() {
 		if err := r.Run(":" + port); err != nil {
 			fmt.Println("error in main.Run:", err)
 		}
-	}
-	if err := r.Run(); err != nil {
-		fmt.Println("error in main.Run:", err)
 	}
 }
